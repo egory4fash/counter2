@@ -1,12 +1,11 @@
 import {Button} from "./Button";
-import {Input} from "./Input";
 
 export const Settings = () => {
     return (
         <div>
             <div className='Box'>
-                <Input/>input1
-                <Input/>input2
+                <select />
+                <select placeholder={'max'}/>
             </div>
             <div>
                 <Button title={'set?'}/>
