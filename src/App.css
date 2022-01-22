@@ -6,7 +6,9 @@
     grid-template-rows: 1fr;
     gap: 100px 100px;
     padding:100px;
-    margin:100px ;
+    margin-top: 20px ;
+    height: 400px;
+   
 
     grid-template-areas:
     "settings counter";

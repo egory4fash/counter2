@@ -1,5 +1,5 @@
-import {Display} from "./Display";
-import {Button} from "./Button";
+import {Display} from "./Display/Display";
+import {Button} from "../Button/Button";
 
 type counterPropsType = {
     number:number

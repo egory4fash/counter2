@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Counter} from "./Counter";
-import {Settings} from "./Settings";
-import {Display} from "./Display";
+import {Counter} from "./components/Counter/Counter";
+import {Settings} from "./components/Settings/Settings";
+import {Display} from "./components/Counter/Display/Display";
 
 
 
