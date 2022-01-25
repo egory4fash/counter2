@@ -1,17 +1,15 @@
-import {Display} from "./Display/Display";
+
 import {Button} from "../Button/Button";
+import s from "./Counter.module.css"
 
-type counterPropsType = {
-    number:number
-}
 
-export const Counter = (props:counterPropsType) => {
+
+export const Counter = () => {
     return (
-        <div className='Box'>
-            <div>display
-                <Display number = {props.number}/>
-            </div>
+        <div className={s.box}>
             <div>
+            </div>
+            <div className = {s.buttons}>
                 <Button title={'add'}/>
 
                 <Button title={'reset'}/>

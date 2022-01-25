@@ -4,8 +4,8 @@ import s from './Settings.module.css'
 
 export const Settings = () => {
     return (
-        <div>
-            <div className='Box'>
+        <div >
+            <div className={s.box}>
                 <SettingPanel/>
                 <SettingPanel/>
             </div>

@@ -1,0 +1,12 @@
+.buttons {
+    display: flex;
+    column-gap: 15px;
+    position: absolute;
+    bottom :20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.box {
+    border:black solid thin;
+}

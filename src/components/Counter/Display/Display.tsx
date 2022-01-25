@@ -1,4 +1,4 @@
-
+import s from "./Display.module.css"
 
 type displayPropsType = {
     number:number
@@ -6,7 +6,7 @@ type displayPropsType = {
 
 export const Display = (props:displayPropsType) => {
     return (
-        <div>{props.number}</div>
+        <div className = {s.display}>{props.number}</div>
 
     )
 }

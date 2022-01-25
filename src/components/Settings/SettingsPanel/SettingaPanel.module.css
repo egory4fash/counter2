@@ -1,19 +1,31 @@
 .panel {
-    display: inline-flex;
-
 }
 
 .main {
+    display: flex;
     border:thin solid black;
    background-color: yellow;
-    margin: 20px;
-    max-height: 100px;
+    margin-bottom: 25px;
+}
+
+.main:last-of-type {
+    margin-bottom: unset;
 }
 
 .right {
-    display:      block;
+    display:     inline-block;
     margin-left:  auto;
     margin-right: 0;
+    margin-top: auto;
+    margin-bottom: auto
+}
+
+.left {
+    display:      inline-block;
+    margin-right:  auto;
+    margin-left: 0;
+    margin-top: auto;
+    margin-bottom: auto
 }
 
 .button {

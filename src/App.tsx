@@ -8,7 +8,7 @@ import {Display} from "./components/Counter/Display/Display";
 
 function App() {
 
-    let [number, setNumber] = useState(0)
+let number = 5
 
   return (
     <div className="App">
@@ -21,7 +21,7 @@ function App() {
         <div className = "counter">
             <div className = "box">
                 <Display number={number} />
-                <Counter number={number} />
+                <Counter  />
             </div>
         </div>
     </div>

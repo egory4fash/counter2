@@ -7,7 +7,7 @@
     gap: 100px 100px;
     padding:100px;
     margin-top: 20px ;
-    height: 400px;
+    height: 300px;
    
 
     grid-template-areas:
@@ -15,10 +15,15 @@
 }
 .settings { grid-area: settings;
     border: thin solid black;
-background-color: darkblue
+background-color: darkblue;
+    padding: 20px;
 }
 .counter { grid-area: counter;
+    position: relative;
     border: thin solid black;
 background-color: red;
+    padding: 15px;
 }
-
+ .settings {
+     position: relative;
+ }

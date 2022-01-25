@@ -1,4 +1,14 @@
 .setButton {
-    border: thin solid green;
-    margin: 50px;
+   position: absolute;
+    bottom: 20px;
+    left:50%;
+    transform:translateX(-50%);
+
+
+
 }
+
+.box {
+
+}
+
