@@ -22,14 +22,14 @@ export const SettingPanel = (props: SettingPanelPropsType) => {
                 props.callBack(props.maxValue + 1)
                 props.setError(false)
             } else
-            if (props.maxValue === props.minValue+1 ){
+            if (props.maxValue === props.minValue ){
                  props.callBack(props.maxValue)
             props.setError(true)}
             else {props.callBack(props.maxValue - 1)
             }
         } else {
             if (e.currentTarget.id === 'increment') {
-                if (props.minValue !== props.maxValue-1) {
+                if (props.minValue !== props.maxValue) {
                     props.callBack(props.minValue + 1)
                 } else {
                     props.callBack(props.minValue)
@@ -48,7 +48,7 @@ export const SettingPanel = (props: SettingPanelPropsType) => {
 
 
     return (
-        <div className={props.error === true ? s.error : s.main}>
+        <div className={props.error  ? s.error : s.main}>
 
             <button id={'decrement'}
                     className={`${s.panel} ${s.button} ${s.left}`}

@@ -4,3 +4,11 @@
     font-size: 60px;
     margin-bottom: 80px;
 }
+
+.red {
+    margin-top: 5px;
+    text-align: center;
+    font-size: 60px;
+    margin-bottom: 80px;
+    color: red;
+}

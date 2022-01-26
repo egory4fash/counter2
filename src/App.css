@@ -21,7 +21,7 @@ background-color: darkblue;
 .counter { grid-area: counter;
     position: relative;
     border: thin solid black;
-background-color: red;
+background-color: gray;
     padding: 15px;
 }
  .settings {
