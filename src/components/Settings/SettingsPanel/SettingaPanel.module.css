@@ -35,3 +35,9 @@
     margin-bottom: auto;
 
 }
+.error {
+    display: flex;
+    border:thin solid black;
+    background-color: red;
+    margin-bottom: 25px;
+}

@@ -1,13 +1,18 @@
+import s from './Button.module.css'
+
 
 type buttonPropsType = {
-    title:string
+    title:string,
+    error:boolean,
+    callBack:() => void
+
 }
 
 export const Button = (props: buttonPropsType) => {
     return (
         <div>
-            <button
-                title={props.title} >{props.title}</button>
+            <button className = {s.button} disabled={props.error} onClick={props.callBack}>{props.title}
+            </button>
         </div>
 
     )
