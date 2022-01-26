@@ -28,11 +28,22 @@ function App() {
         setNumber(min)
     }
 
-    const setMaxValue = (value:number) =>{
-        value > min ?
-            setMax(value):
+    const setMaxValue = (value: number) => {
+        if (value >= min) {
+            setMax(value)
+            setError(false)
+        } else {
             setError(true)
+        }
+    }
+    const setMinValue = (value: number) => {
+        if (value >= 0 && value <= max) {
+            setMin(value)
+            setError(false)
+        } else {
 
+            setError(true)
+        }
     }
 
     const incOff = number === max
@@ -45,9 +56,10 @@ function App() {
                     <Settings
                         min={min}
                         max={max}
-                        setMaxValue = {setMaxValue}
+                        setMaxValue={setMaxValue}
+                        setMinValue={setMinValue}
                         error={error}
-                        setError={setError}
+
                         setSetMode={setSetMode}
                         setNumber={setNumber}
                     />

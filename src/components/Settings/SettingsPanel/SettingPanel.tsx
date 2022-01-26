@@ -8,20 +8,24 @@ type SettingPanelPropsType = {
     title: string,
     callBack: (value: number) => void
     error: boolean,
-    setError: (value: boolean) => void
+
     setSetMode: (value: boolean) => void
     value:number
 }
 
 export const SettingPanel = (props: SettingPanelPropsType) => {
 
+    const onChangeHandler = (e:any) => {
+        props.callBack(e.currentTarget.value)
+        props.setSetMode(true)
+    }
 
     return (
         <div>
             <p>{props.title}</p>
-        <div className={props.error ? s.error : s.main}>
+        <div >
 
-            <input className={s.input} type={"number"} value={props.value}/>
+            <input className={props.error ? s.error : s.input} type={"number"} value={props.value} onChange={onChangeHandler}/>
 
         </div>
         </div>

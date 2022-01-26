@@ -6,15 +6,18 @@ type SettingsPropsType = {
     min: number,
     max: number,
     setMaxValue:(value:number) => void
+    setMinValue:(value:number) => void
     error: boolean
-    setError: (value:boolean) => void
+
     setSetMode:(value:boolean) => void
     setNumber:(value:number) => void
 }
 
 export const Settings = (props: SettingsPropsType) => {
 
-
+const onSetPressHandler = () => {
+    props.setSetMode(false)
+}
 
     return (
         <div>
@@ -25,16 +28,16 @@ export const Settings = (props: SettingsPropsType) => {
                    value = {props.max}
                     callBack={props.setMaxValue}
                     error={props.error}
-                    setError={props.setError}
+
                 setSetMode = {props.setSetMode}/>
                 <SettingPanel
                     id={'minSettings'}
                     title={'min value:'}
 
-                    maxValue={props.max}
-                    callBack={props.setMin}
+                    value={props.min}
+                    callBack={props.setMinValue}
                     error={props.error}
-                    setError={props.setError}
+
                     setSetMode = {props.setSetMode}/>
             </div>
             <div className={s.setButton}>

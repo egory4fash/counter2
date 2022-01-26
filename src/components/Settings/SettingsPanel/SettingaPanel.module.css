@@ -43,8 +43,12 @@ margin-top: 0;
     font-size: 40px;
 }
 .error {
-    display: flex;
-    border:thin solid black;
+    margin-top: 0;
+    width: 440px;
+    height: 30px;
+    text-align: center;
+    font-size: 40px;
+
     background-color: red;
-    margin-bottom: 25px;
+
 }
