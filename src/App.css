@@ -15,7 +15,7 @@
 }
 .settings { grid-area: settings;
     border: thin solid black;
-background-color: darkblue;
+background-color: azure;
     padding: 20px;
 }
 .counter { grid-area: counter;

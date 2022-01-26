@@ -21,7 +21,7 @@ export const Counter = (props:CounterPropsType) => {
                     callBack={props.increaseCounter}/>
 
                 <Button
-                    error={props.error}
+                    error={false}
                     title={'reset'}
                     callBack={props.resetCounter}
                 />

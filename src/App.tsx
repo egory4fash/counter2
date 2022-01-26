@@ -11,7 +11,7 @@ function App() {
     let [max, setMax] = useState(5)
     let [error, setError] = useState(false)
     let [setMode, setSetMode] = useState(false)
-    let [redLight, setRedLight] = useState(false)
+
 
     let [number, setNumber] = useState(min)
 
@@ -21,14 +21,21 @@ function App() {
 
         } else {
             setNumber(number)
-            setRedLight(true)
+
         }
     }
-
-
     const resetCounter = () => {
         setNumber(min)
     }
+
+    const setMaxValue = (value:number) =>{
+        value > min ?
+            setMax(value):
+            setError(true)
+
+    }
+
+    const incOff = number === max
 
 
     return (
@@ -38,8 +45,7 @@ function App() {
                     <Settings
                         min={min}
                         max={max}
-                        setMax={setMax}
-                        setMin={setMin}
+                        setMaxValue = {setMaxValue}
                         error={error}
                         setError={setError}
                         setSetMode={setSetMode}
@@ -55,7 +61,7 @@ function App() {
                         error={error}
                         setMode={setMode}
                         max={max}/>
-                    <Counter error={redLight}
+                    <Counter error={incOff}
                              increaseCounter={increaseCounter}
                              resetCounter={resetCounter}/>
                 </div>
