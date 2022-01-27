@@ -1,4 +1,6 @@
 .button {
     height: 50px;
     width: 150px;
+    font-size: 30px;
+    font-family: "Droid Sans Mono Dotted";
 }

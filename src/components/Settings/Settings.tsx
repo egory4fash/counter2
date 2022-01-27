@@ -5,19 +5,17 @@ import s from './Settings.module.css'
 type SettingsPropsType = {
     min: number,
     max: number,
-    setMaxValue:(value:number) => void
-    setMinValue:(value:number) => void
+    setMaxValue: (value: number) => void
+    setMinValue: (value: number) => void
     error: boolean
-
-    setSetMode:(value:boolean) => void
-    setNumber:(value:number) => void
+    setSetMode: (value: boolean) => void
+    setNumber: (value: number) => void
+    setMode: boolean
+    onSetPressHandler: () => void
 }
 
 export const Settings = (props: SettingsPropsType) => {
 
-const onSetPressHandler = () => {
-    props.setSetMode(false)
-}
 
     return (
         <div>
@@ -25,23 +23,22 @@ const onSetPressHandler = () => {
                 <SettingPanel
                     id={'maxSettings'}
                     title={'max value:'}
-                   value = {props.max}
+                    value={props.max}
                     callBack={props.setMaxValue}
                     error={props.error}
-
-                setSetMode = {props.setSetMode}/>
+                    setSetMode={props.setSetMode}/>
                 <SettingPanel
                     id={'minSettings'}
                     title={'min value:'}
-
                     value={props.min}
                     callBack={props.setMinValue}
                     error={props.error}
-
-                    setSetMode = {props.setSetMode}/>
+                    setSetMode={props.setSetMode}/>
             </div>
             <div className={s.setButton}>
-                <Button title={'set?'} error = {props.error} callBack={onSetPressHandler}/>
+                <Button title={'set?'}
+                        error={!props.setMode ? true : props.error}
+                        callBack={props.onSetPressHandler}/>
 
             </div>
         </div>

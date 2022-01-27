@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Counter} from "./components/Counter/Counter";
 import {Settings} from "./components/Settings/Settings";
@@ -12,41 +12,70 @@ function App() {
     let [error, setError] = useState(false)
     let [setMode, setSetMode] = useState(false)
 
+    useEffect(() => {
+        let minValueString = localStorage.getItem("MinValue")
+        if (minValueString) {
+            setMin(JSON.parse(minValueString))
+            setDisplayedValue(JSON.parse(minValueString))
+        }
+        let maxValueString = localStorage.getItem("MaxValue")
+        if (maxValueString) {
+            setMax(JSON.parse(maxValueString))}
+    },[])
 
-    let [number, setNumber] = useState(min)
+
+
+    let [displayedValue, setDisplayedValue] = useState(min)
+
+
 
     const increaseCounter = () => {
-        if (number !== max) {
-            setNumber(number + 1)
-
+        if (displayedValue !== max) {
+            setDisplayedValue(displayedValue + 1)
         } else {
-            setNumber(number)
-
+            setDisplayedValue(displayedValue)
         }
     }
     const resetCounter = () => {
-        setNumber(min)
+        setDisplayedValue(min)
     }
 
     const setMaxValue = (value: number) => {
-        if (value >= min) {
+        if (value <= 0) {
+            setMax(0)
+            setError(true)
+        } else if (value > min) {
             setMax(value)
             setError(false)
         } else {
+            setMax(value)
             setError(true)
         }
     }
+
     const setMinValue = (value: number) => {
-        if (value >= 0 && value <= max) {
+        if (value <= 0) {
+            setMin(0)
+            if (max === 1) {
+                setError(false)
+            }
+        } else if (value >= max) {
+            setMin(value)
+            return setError(true)
+        } else {
             setMin(value)
             setError(false)
-        } else {
-
-            setError(true)
         }
     }
 
-    const incOff = number === max
+    const onSetPressHandler = () => {
+        setSetMode(false)
+        setDisplayedValue(min)
+        localStorage.setItem("MinValue",JSON.stringify(min))
+        localStorage.setItem("MaxValue",JSON.stringify(max))
+    }
+
+    const incrementOff = displayedValue === max
 
 
     return (
@@ -59,23 +88,26 @@ function App() {
                         setMaxValue={setMaxValue}
                         setMinValue={setMinValue}
                         error={error}
-
                         setSetMode={setSetMode}
-                        setNumber={setNumber}
+                        setNumber={setDisplayedValue}
+                        setMode={setMode}
+                        onSetPressHandler={onSetPressHandler}
                     />
                 </div>
 
             </div>
-            <div className="counter">
+            <div className="counter" id={'box'}>
                 <div className="box">
                     <Display
-                        number={number}
+                        displayedValue={displayedValue}
                         error={error}
                         setMode={setMode}
                         max={max}/>
-                    <Counter error={incOff}
-                             increaseCounter={increaseCounter}
-                             resetCounter={resetCounter}/>
+                    <Counter
+                        error={incrementOff}
+                        increaseCounter={increaseCounter}
+                        resetCounter={resetCounter}
+                        setMode={setMode}/>
                 </div>
             </div>
         </div>

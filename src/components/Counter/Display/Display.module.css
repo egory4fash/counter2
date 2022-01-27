@@ -1,14 +1,20 @@
 .display {
-    margin-top: 5px;
+    margin-top: 25px;
     text-align: center;
-    font-size: 60px;
+    font-size: 100px;
     margin-bottom: 80px;
 }
 
 .red {
-    margin-top: 5px;
+    margin-top: 25px;
     text-align: center;
-    font-size: 60px;
+    font-size: 100px;
     margin-bottom: 80px;
-    color: red;
+    color:#FC3939;
+}
+
+.incorrect {
+    text-align: center;
+    color: #FC3939;
+    font-size: 50px;
 }

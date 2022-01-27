@@ -1,21 +1,26 @@
 import s from "./Display.module.css"
 
 type displayPropsType = {
-    number:number
-    error:boolean
-    setMode:boolean
-    max:number
+    displayedValue: number
+    error: boolean
+    setMode: boolean
+    max: number
 }
 
 
-export const Display = (props:displayPropsType) => {
+export const Display = (props: displayPropsType) => {
 
-const style = `${props.number !==props.max ? s.display: s.red}`
+    const style = `${props.displayedValue === props.max ? s.red : s.display}`
 
     return (
-        <div className = {style}>
-            {props.error?"Incorrect value":
-            props.setMode?"Set values and press 'set'" : props.number}</div>
+        <div>
+            {props.setMode ? <p>Set values and press 'set'</p> : ''}
+            {props.error ? <p className={s.incorrect}>Incorrect value</p> : ''}
+            {!props.error && !props.setMode &&
+                <div className={style}>
+                    {props.displayedValue}
+                </div>}
+        </div>
 
     )
 }
