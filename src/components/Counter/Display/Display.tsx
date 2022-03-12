@@ -1,24 +1,23 @@
 import s from "./Display.module.css"
-
-type displayPropsType = {
-    displayedValue: number
-    error: boolean
-    setMode: boolean
-    max: number
-}
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "../../State/Store";
+import {InitialStateType} from "../../State/Reducer";
 
 
-export const Display = (props: displayPropsType) => {
+export const Display = () => {
 
-    const style = `${props.displayedValue === props.max ? s.red : s.display}`
+    const state = useSelector<AppRootStateType, InitialStateType>(state => state.counter)
+
+    const style = state.displayedValue === state.max ? s.red : s.display
 
     return (
         <div>
-            {props.setMode ? <p>Set values and press 'set'</p> : ''}
-            {props.error ? <p className={s.incorrect}>Incorrect value</p> : ''}
-            {!props.error && !props.setMode &&
+
+            {state.setMode ? <p>Set values and press 'set'</p> : ''}
+            {state.error ? <p className={s.incorrect}>Incorrect value</p> : ''}
+            {!state.error && !state.setMode &&
                 <div className={style}>
-                    {props.displayedValue}
+                    {state.displayedValue}
                 </div>}
         </div>
 

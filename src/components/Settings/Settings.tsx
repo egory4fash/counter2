@@ -1,44 +1,51 @@
 import {Button} from "../Button/Button";
 import {SettingPanel} from "./SettingsPanel/SettingPanel";
 import s from './Settings.module.css'
-
-type SettingsPropsType = {
-    min: number,
-    max: number,
-    setMaxValue: (value: number) => void
-    setMinValue: (value: number) => void
-    error: boolean
-    setSetMode: (value: boolean) => void
-    setNumber: (value: number) => void
-    setMode: boolean
-    onSetPressHandler: () => void
-}
-
-export const Settings = (props: SettingsPropsType) => {
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType, store} from "../State/Store";
+import {InitialStateType, onSetPressHandlerAC, setMaxValueAC, setMinValueAC, setSetModeAC} from "../State/Reducer";
 
 
+export const Settings = () => {
+
+    const state = useSelector<AppRootStateType, InitialStateType>(state => state.counter)
+    const dispatch = useDispatch()
+
+    const handlerMin = (value: number) => {
+        dispatch(setMinValueAC(value))
+    }
+    const handlerMax = (value: number) => {
+        dispatch(setMaxValueAC(value))
+    }
+    const setHandler = (value: boolean) => {
+        dispatch(setSetModeAC(value))
+    }
+    const onSetPressHandler = () => {
+        dispatch(onSetPressHandlerAC())
+        localStorage.setItem("app-state",JSON.stringify(store.getState()))
+    }
     return (
         <div>
             <div className={s.box}>
                 <SettingPanel
                     id={'maxSettings'}
                     title={'max value:'}
-                    value={props.max}
-                    callBack={props.setMaxValue}
-                    error={props.error}
-                    setSetMode={props.setSetMode}/>
+                    value={state.max}
+                    callBack={handlerMax}
+                    error={state.error}
+                    setSetMode={setHandler}/>
                 <SettingPanel
                     id={'minSettings'}
                     title={'min value:'}
-                    value={props.min}
-                    callBack={props.setMinValue}
-                    error={props.error}
-                    setSetMode={props.setSetMode}/>
+                    value={state.min}
+                    callBack={handlerMin}
+                    error={state.error}
+                    setSetMode={setHandler}/>
             </div>
             <div className={s.setButton}>
                 <Button title={'set?'}
-                        error={!props.setMode ? true : props.error}
-                        callBack={props.onSetPressHandler}/>
+                        error={!state.setMode ? true : state.error} //FIX NAMING-FIX JSX
+                        callBack={onSetPressHandler}/>
 
             </div>
         </div>

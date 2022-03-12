@@ -17,6 +17,5 @@ export const Button = (props: buttonPropsType) => {
                 {props.title}
             </button>
         </div>
-
     )
 }
